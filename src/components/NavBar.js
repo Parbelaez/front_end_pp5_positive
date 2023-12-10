@@ -4,8 +4,8 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo_color_trimmed from '../assets/logo_color_trimmed.png';
+import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
     return (
@@ -21,23 +21,12 @@ const NavBar = () => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link href="#action1">Home</Nav.Link>
-                        <NavDropdown title="Places" id="navbarScrollingDropdown">
-                            <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action4">
-                                Another action
-                            </NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action5">
-                                Something else here
-                            </NavDropdown.Item>
-                        </NavDropdown>
-                        <Nav.Link href="#action2">Posts</Nav.Link>
-                        <Nav.Link href="#action2">Profile</Nav.Link>
-                        <Nav.Link href="#action2">Logout</Nav.Link>
-                        <Nav.Link href="#" disabled>
-                            About
-                        </Nav.Link>
+                        <NavLink exact to="/">Home</NavLink>
+                        <NavLink to="/places">Places</NavLink>
+                        <NavLink to="/posts">Posts</NavLink>
+                        <NavLink to="/profile">Profile</NavLink>
+                        <NavLink to="/logout">Logout</NavLink>
+                        <NavLink to="/about">About</NavLink>
                     </Nav>
                     <Form className="d-flex">
                         <Form.Control

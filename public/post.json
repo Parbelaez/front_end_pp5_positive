@@ -1,0 +1,9 @@
+{
+    "posts": [{"id": 1, "title": "json-server", "place": "lugar", "content":"contenido", "image": {"url": "https://t3.ftcdn.net/jpg/01/23/14/80/360_F_123148069_wkgBuIsIROXbyLVWq7YNhJWPcxlamPeZ.jpg"}},
+        {"id": 2, "title": "json-server2", "place": "lugar", "content":"contenido", "image": {"url": "https://t3.ftcdn.net/jpg/01/23/14/80/360_F_123148069_wkgBuIsIROXbyLVWq7YNhJWPcxlamPeZ.jpg"}},
+        {"id": 3, "title": "json-server3", "place": "lugar", "content":"contenido", "image": {"url": "https://t3.ftcdn.net/jpg/01/23/14/80/360_F_123148069_wkgBuIsIROXbyLVWq7YNhJWPcxlamPeZ.jpg"}},
+        {"id": 4, "title": "json-server4", "place": "lugar", "content":"contenido", "image": {"url": "https://t3.ftcdn.net/jpg/01/23/14/80/360_F_123148069_wkgBuIsIROXbyLVWq7YNhJWPcxlamPeZ.jpg"}},
+        {"id": 5, "title": "json-server5", "place": "lugar", "content":"contenido", "image": {"url": "https://t3.ftcdn.net/jpg/01/23/14/80/360_F_123148069_wkgBuIsIROXbyLVWq7YNhJWPcxlamPeZ.jpg"}},
+        {"id": 6, "title": "json-server6", "place": "lugar", "content":"contenido", "image": {"url": "https://t3.ftcdn.net/jpg/01/23/14/80/360_F_123148069_wkgBuIsIROXbyLVWq7YNhJWPcxlamPeZ.jpg"}}
+    ]
+}

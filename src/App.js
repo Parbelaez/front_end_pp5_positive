@@ -2,6 +2,9 @@ import styles from './App.module.css';
 import NavBar from './components/NavBar';
 import Container from 'react-bootstrap/Container';
 import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import CreatePlace from './pages/CreatePlace';
+import './api/axiosDefaults';
 
 function App() {
   return (
@@ -10,8 +13,7 @@ function App() {
       <Container className={styles.Main}>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          {/* COMO?????????????????????
-          <Route exact path="/places" element={<Places />} /> */}
+          <Route exact path="/places" element={<CreatePlace />} />
           <Route exact path="/posts" element={<Posts />} />
           <Route exact path="/profile" element={<Profile />} />
           <Route exact path="/logout" element={<Logout />} />
@@ -23,13 +25,7 @@ function App() {
   );
 }
 
-function Home() {
-  return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
-  );
-}
+
 
 function Places() {
   return (

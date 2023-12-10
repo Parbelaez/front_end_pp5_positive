@@ -6,11 +6,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo_color_trimmed from '../assets/logo_color_trimmed.png';
 import { NavLink } from 'react-router-dom';
+import styles from '../styles/NavBar.module.css';
 
 const NavBar = () => {
     return (
         <Navbar expand="md" fixed="top" className="bg-body-tertiary">
-            <Container fluid>
+            <Container>
                 <Navbar.Brand>
                     <img src={logo_color_trimmed} alt="logo" height="45"></img>
                 </Navbar.Brand>
@@ -21,12 +22,30 @@ const NavBar = () => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <NavLink exact to="/">Home</NavLink>
-                        <NavLink to="/places">Places</NavLink>
-                        <NavLink to="/posts">Posts</NavLink>
-                        <NavLink to="/profile">Profile</NavLink>
-                        <NavLink to="/logout">Logout</NavLink>
-                        <NavLink to="/about">About</NavLink>
+                        <NavLink className={styles.NavLink}
+                            activeClassName={styles.Active}
+                            exact to="/">Home
+                        </NavLink>
+                        <NavLink className={styles.NavLink}
+                            activeClassName={styles.Active}
+                            to="/places">Places
+                        </NavLink>
+                        <NavLink className={styles.NavLink}
+                            activeClassName={styles.Active}
+                            to="/posts">Posts
+                        </NavLink>
+                        <NavLink className={styles.NavLink}
+                            activeClassName={styles.Active}
+                            to="/profile">Profile
+                        </NavLink>
+                        <NavLink className={styles.NavLink}
+                            activeClassName={styles.Active}
+                            to="/logout">Logout
+                        </NavLink>
+                        <NavLink className={styles.NavLink}
+                            activeClassName={styles.Active}
+                            to="/about">About
+                        </NavLink>
                     </Nav>
                     <Form className="d-flex">
                         <Form.Control

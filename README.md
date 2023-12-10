@@ -96,4 +96,7 @@ And then, we need to wrap our app with the `Router` component. You can do that b
 
 Feel free to check the code in the App.js file to see how it should look like.
 
+**NOTE:** If you are getting errors, remember that you are using a template. Therefore, some version would need to be updated in the package.json file. Just change the version to the latest one or the one you need and run `npm install` again.
+
+
 

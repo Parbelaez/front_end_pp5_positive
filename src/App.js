@@ -7,6 +7,7 @@ import Signin from './pages/Signin';
 import CreatePlace from './pages/CreatePlace';
 import './api/axiosDefaults';
 
+
 function App() {
   return (
     <div className={styles.App}>
@@ -20,7 +21,7 @@ function App() {
           <Route exact path="/profile" element={<Profile />} />
           <Route exact path="/logout" element={<Logout />} />
           <Route exact path="/about" element={<About />} />
-          <Route path="*" render={() => <h1>404 Not Found</h1>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>
     </div>
@@ -66,6 +67,15 @@ function About() {
     <div>
       <h1>About</h1>
     </div>
+  );
+}
+
+function NotFound() {
+  return (
+    <>
+      <h1>404 - Page Not Found</h1>
+      <p>Sorry, the page you are looking for could not be found.</p>
+    </>
   );
 }
 

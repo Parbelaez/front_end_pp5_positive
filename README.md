@@ -98,5 +98,23 @@ Feel free to check the code in the App.js file to see how it should look like.
 
 **NOTE:** If you are getting errors, remember that you are using a template. Therefore, some version would need to be updated in the package.json file. Just change the version to the latest one or the one you need and run `npm install` again.
 
+## Creating the 404 - Not Found component
 
+Actually, it is not a component. It is just a page that will be rendered when a user visits a URL that does not exist. For example, if a user visits the `/about` URL, the About component should be rendered. But, if a user visits the `/about123` URL, the 404 - Not Found page should be rendered.
 
+It is just a function in the App.jsx that returns a message. You can create it by adding the following code:
+
+```js
+<Route path="*" element={<NotFound />} />
+
+...
+
+function NotFound() {
+  return (
+    <>
+      <h1>404 - Page Not Found</h1>
+      <p>Sorry, the page you are looking for could not be found.</p>
+    </>
+  );
+}
+```

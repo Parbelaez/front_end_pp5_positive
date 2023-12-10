@@ -8,95 +8,92 @@ DO NOT use this template if you are using the Gitpod IDE. Use the following comm
 
 You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **31st August, 2023**
 
-## Codeanywhere Reminders
+## Strating the React App
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+To start the React app, you need first to create the repository using the CIs template form ____!!!!!
+Then, run the following commands in the terminal:
 
-To log into the Heroku toolbelt CLI:
+1. `npm install`
+2. `npm start`
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+After that, you should see the React app running on port 3000. You can access it by clicking on the "Preview" button on the top of the IDE.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+## Creating the Navbar component
 
----
+React works with components. Components are reusable pieces of code that can be used to build elements of the UI.
 
-Happy coding!
+To create a component, you need to create a new file in the `src` folder. The file name should start with a capital letter, and it should have the `.js` extension. For example, `NavBar.js`.
 
-# Getting Started with Create React App
+In the file, you need to import React and export the component. You can do that by adding the following code:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```js
+import React from "react";
 
-## Available Scripts
+export default function NavBar() {
+  return <div>NavBar</div>;
+}
+```
 
-In the project directory, you can run:
+To use the component, you need to import it in the `App.js` file. You can do that by adding the following code:
 
-### `npm install`
+```js
+import NavBar from "./NavBar";
+```
 
-Installs the required npm packages.
+Then, you can use the component in the `App.js` file by adding the following code:
 
-### `npm start`
+```js
+<NavBar />
+```
 
-Runs the app in the development mode.\
-Open port 3000 to view it in the browser.
+## Creating the Footer component
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To create the Footer component, you can follow the same steps as for the NavBar component.
 
-### `npm test`
+## Creating the Home component
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Before creating the rest of the components, we need to create the routes.
 
-### `npm run build`
+Routes are used to define which component should be rendered when a user visits a specific URL. For example, if a user visits the `/` URL, the Home component should be rendered. If a user visits the `/about` URL, the About component should be rendered. So, in React, the page is not reloaded, but the component is changed or rendered.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**PREVIOUS STEP:** We need to import the container component into the `App.js` file. You can do that by adding the following code:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```js
+import Container from "react-bootstrap/Container";
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+And then, you can use the component in the `App.js` file by adding the following code:
 
-### `npm run eject`
+```js
+<NavBar />
+<Container>
+    <Home />
+    <Footer />
+</Container>
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To create the routes, we need to install the `react-router-dom` package. You can do that by running the following command in the terminal:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install react-router-dom
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+After that, we need to import the `BrowserRouter` component in the `App.js` file. You can do that by adding the following code:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```js
+import { BrowserRouter as Router } from "react-router-dom";
+```
 
-## Learn More
+And then, we need to wrap our app with the `Router` component. You can do that by adding the following code:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```js
+<Router>
+  <App />
+<Router>
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+***SUPER IMPORTANT:*** The React Router version in the tutorial is not the same as the one we are using. So, you need to change the code a little bit. For example: Switch has been deprecated and replaced with Routes. You can read more about the changes here: https://reactrouter.com/docs/en/v6/upgrading/v5
 
-### Code Splitting
+Feel free to check the code in the App.js file to see how it should look like.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -1,14 +1,35 @@
+# THE POSITIVE SOCIAL NETWORK
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 Welcome,
 
-This is the Code Institute student template for React apps on the Codeanywhere IDE. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.  
-DO NOT use this template if you are using the Gitpod IDE. Use the following command instead:  
-`npx create-react-app . --template git+https://github.com/Code-Institute-Org/cra-template-moments.git --use-npm`
+## Table of Contents
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **31st August, 2023**
+- [Introduction](#introduction)
+- [Starting the React App](#starting-the-react-app)
+- [Creating the Navbar component](#creating-the-navbar-component)
+- [Creating the Footer component](#creating-the-footer-component)
+- [Creating the Home component](#creating-the-home-component)
+- [Creating the 404 - Not Found component](#creating-the-404---not-found-component)
+- [Deploying the React app in Heroku](#deploying-the-react-app-in-heroku)
+- [Adding the Bootstrap library](#adding-the-bootstrap-library)
+- [Creating the Login component](#creating-the-login-component)
+- [Creating the SignUp component](#creating-the-signup-component)
+- [Creating the Dashboard (Home) component](#creating-the-dashboard-home-component)
+- [Creating the PostCard component](#creating-the-postcard-component)
+- [Creating the CurrentUser context](#creating-the-currentuser-context)
+- [Creating the Interceptors](#creating-the-interceptors)
 
-## Strating the React App
+## Introduction
+
+This project is a React App for the Positive Social Network Front-End, a social network for people to share only positive reviews of restaurants, bars, hotels, etc. Why only positive reviews? Because we want to create a positive environment for people to share their experiences and recommendations. We believe that there are already too many negative reviews on the internet, and we want to change that.
+
+In my experience as a movie and music reviewer, people feel also attracted to check the negatively scored movies. We humans are curious by nature, and we want to know why a movie is so bad, or why a restaurant is so bad. We even want to contradict others opinions, so we also want to prove people wrong. This is why I believe that a social network with only positive reviews will be a success. Not only because really good places will have more notoriety, but also because people won't have information about bad places, so these places will need to strive harder to at least, have presence in the Internet.
+
+Also, when one writes a negative review, it is very easy to get carried away and write a very long one, losing even scope. But, when one writes a positive review, needs to really focus on explaining why the place is so good, and this is a good exercise for the brain and also, to hihglight why the place is worth visiting.
+
+## StaRting the React App
 
 To start the React app, you need first to create the repository using the CIs template form ____!!!!!
 Then, run the following commands in the terminal:
@@ -139,3 +160,103 @@ After that, you need to deploy the app. You can do that by following the steps b
 2. Click on the "Deploy Branch" button
 
 Basically, it is the same as with the API project. You can check the previous readme files for more information.
+
+## Adding the Bootstrap library
+
+To add the Bootstrap library, you need to install the `react-bootstrap` package. You can do that by running the following command in the terminal:
+
+```bash
+npm install react-bootstrap
+```
+
+After that, you need to import the Bootstrap CSS file in the `index.js` file. You can do that by adding the following code:
+
+```js
+import "bootstrap/dist/css/bootstrap.min.css";
+```
+
+But, we have decided to use it in a different way. We have decided to import the Bootstrap components in the components where we need them. For example, if we need the `Container` component, we will import it in the `App.js` file. If we need the `Button` component, we will import it in the `Home.js` file.
+
+This way, we will have a better overview of which components we are using in which files.
+
+## Creating the Login component
+
+To create the Login.jsx component, we have used a Bootstrap form. You can read more about it here: https://react-bootstrap.github.io/components/forms/
+
+There is something imprtant compared with the tutorial, and it is the 'useNavigate' hook. You can read more about it here: https://reactrouter.com/docs/en/v6/api#usenavigate . Basically, it is used to navigate to a different page, but, in the tutorial, they are using the 'useHistory' hook. You can read more about it here: https://reactrouter.com/docs/en/v6/api#usehistory . The difference is that the 'useNavigate' hook is used in React Router v6, and the 'useHistory' hook is used in React Router v5.
+
+Also, at the time of using it, it differs a little:
+
+```js
+// React Router v5
+import { useHistory } from "react-router-dom";
+
+// React Router v6
+import { useNavigate } from "react-router-dom";
+```
+
+The following naming is optional:
+
+```js
+// React Router v5
+const history = useHistory();
+
+// React Router v6
+const navigate = useNavigate();
+```
+
+```js
+// React Router v5
+history.push("/");
+
+// React Router v6
+navigate("/");
+```
+
+## Creating the SignUp component
+
+To create the SignUp component, you can follow the same steps as for the Login component.
+
+## Creating the Dashboard (Home) component
+
+The idea of the webpage, is that the non-registered user will only see a splash screen in which it is invited to make part of the community. The registered user is invited to log in. And the logged in user will see the dashboard (Home) component.
+
+In this page, the user will see the list of the posts. The posts will be fetched from the API and will be listed from newer to older.
+
+Also, it is worth noting that the NavBar is available only for the logged in user. The non-registered user and the registered user will not see the NavBar.
+
+## Creating the PostCard component
+
+## Creating the CurrentUser context
+
+We are using axios to make the API calls. You can read more about it here: https://www.npmjs.com/package/axios. Basically, it is a library that allows us to make HTTP requests. Therefore, we can use it to make GET, POST, PUT, and DELETE requests.
+
+We have also created the CurrentUser context as a sepparate component, so we can reuse it in other components, such as the Login, NavBar and SignUp.
+
+And we are retrieving the user data and storing it in the following code:
+
+```js
+const handleMount = async () => {
+        try {
+            const { data } = await axios.get('dj-rest-auth/user/');
+            setCurrentUser(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+```
+
+**NOTE: ** as you now from the API project, we are using the dj-rest-auth package to handle the authentication.
+
+## Creating the Interceptors
+
+As we are using JWT (JSON Web Tokens), we need to check if they have expired or not everytime a user wants to use the webpage. These tokens have a validity of 5 minutes, so without the proper configuration, the user will need to log in everytime that he/she opens the page. With Axios, we can intercept requests or responses before they are handled by then or catch. So, we can check the validity of the token before the request is made. If the token is expired, we can redirect the user to the login page or, much better, we can refresh the token and then make the request.
+
+You can read more about it here: https://www.npmjs.com/package/axios#interceptors
+
+
+
+## Creating the About component
+
+To create the About component, you can follow the same steps as for the Home component.
+

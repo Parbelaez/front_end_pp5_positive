@@ -66,20 +66,20 @@ function CreatePlace() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const formData = new FormData();
+        const signUp = new signUp();
 
-        formData.append("place_name", postData.place_name);
-        formData.append("place_type", postData.place_type);
-        formData.append("address", postData.address);
-        formData.append("country", postData.country);
-        formData.append("city", postData.city);
-        formData.append("website", postData.website);
-        formData.append("phone_number", postData.phone_number);
-        formData.append("description", postData.description);
-        formData.append("image", postData.imageInput.current.files[0]);
+        signUp.append("place_name", postData.place_name);
+        signUp.append("place_type", postData.place_type);
+        signUp.append("address", postData.address);
+        signUp.append("country", postData.country);
+        signUp.append("city", postData.city);
+        signUp.append("website", postData.website);
+        signUp.append("phone_number", postData.phone_number);
+        signUp.append("description", postData.description);
+        signUp.append("image", postData.imageInput.current.files[0]);
 
         try {
-            const { data } = await axiosReq.post("/posts/", formData);
+            const { data } = await axiosReq.post("/posts/", signUp);
             history.push(`/posts/${data.id}`);
         } catch (err) {
             console.log(err);

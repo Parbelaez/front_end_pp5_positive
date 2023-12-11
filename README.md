@@ -118,3 +118,24 @@ function NotFound() {
   );
 }
 ```
+
+## Deploying the React app in Heroku
+
+To deploy the React app in Heroku, you need to create a new app in Heroku. You can do that by following the steps below:
+
+1. Go to https://dashboard.heroku.com/apps
+2. Click on the "New" button and select "Create new app"
+3. Enter the app name and click on the "Create app" button
+
+After that, you need to connect the Heroku app with the GitHub repository. You can do that by following the steps below:
+
+1. Go to the "Deploy" tab
+2. Select "GitHub" as the deployment method
+3. Search for the repository name and click on the "Connect" button
+
+After that, you need to deploy the app. You can do that by following the steps below:
+
+1. Go to the "Deploy" tab
+2. Click on the "Deploy Branch" button
+
+Basically, it is the same as with the API project. You can check the previous readme files for more information.

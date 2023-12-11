@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
+import Login from './pages/Login';
 import CreatePlace from './pages/CreatePlace';
 import './api/axiosDefaults';
 
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/login" element={<Login />} />
           <Route exact path="/places" element={<CreatePlace />} />
           <Route exact path="/posts" element={<Posts />} />
           <Route exact path="/profile" element={<Profile />} />

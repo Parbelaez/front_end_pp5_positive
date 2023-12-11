@@ -118,7 +118,7 @@ function Signup() {
                     <Alert key={idx} variant='warning'>{message}</Alert>
                 ))}
             </Form>
-            <Link className='d-block' to="/signin">
+            <Link to="/login">
                 Already have an account? <span>Login</span>
             </Link>
         </div>

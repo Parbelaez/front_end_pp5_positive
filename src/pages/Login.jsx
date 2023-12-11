@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 // useHistory has been replaced by useNavigate in react-router-dom v6
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -9,6 +9,8 @@ import axios from 'axios';
 
 
 function Login() {
+    const setCurrentUser = useContext(setCurrentUserContext);
+
     const [loginData, setLoginData] = useState({
         username: '',
         password: '',
@@ -31,10 +33,9 @@ function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            console.log('try submit loginData');
             await axios.post('/dj-rest-auth/login/', loginData);
+            setCurrentUser(data.user);
             navigate('/');
-            console.log('finished submit loginData');
         } catch (error) {
             // The question mark will check if there is a response object in the error object
             // If there is a response object, then the data property will be accessed

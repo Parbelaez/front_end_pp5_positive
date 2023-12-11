@@ -1,14 +1,16 @@
-import React from 'react'
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import React, { useContext } from 'react'
+import { Button, Container, Form, Nav, Navbar }  from 'react-bootstrap';
 import logo_color_trimmed from '../assets/logo_color_trimmed.png';
 import { NavLink } from 'react-router-dom';
 import styles from '../styles/NavBar.module.css';
+import { CurrentUserContext } from '../App';
 
 const NavBar = () => {
+    const currentUser = useContext(CurrentUserContext);
+
+    const loggedInIcons = <>{currentUser?.username}</>;
+    const loggedOutIcons = <></>;
+
     return (
         <Navbar expand="md" fixed="top" className="bg-body-tertiary">
             <Container>
@@ -47,6 +49,7 @@ const NavBar = () => {
                             to="/about">About
                         </NavLink>
                     </Nav>
+                    {currentUser ? loggedInIcons : loggedOutIcons}
                     <Form className="d-flex">
                         <Form.Control
                             type="search"

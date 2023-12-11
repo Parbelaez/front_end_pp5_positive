@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 // useHistory has been replaced by useNavigate in react-router-dom v6
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -6,10 +6,11 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Alert } from 'react-bootstrap';
 import axios from 'axios';
+import { useSetCurrentUser } from '../contexts/CurrentUserContext';
 
 
 function Login() {
-    const setCurrentUser = useContext(setCurrentUserContext);
+    const setCurrentUser = useSetCurrentUser();
 
     const [loginData, setLoginData] = useState({
         username: '',

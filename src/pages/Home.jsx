@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 function Home() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch("https://3000-parbelaez-frontendpp5po-eny30k5q3az.ws-us106.gitpod.io/post.json")
+    fetch("https://3000-parbelaez-frontendpp5po-eny30k5q3az.ws-eu106.gitpod.io/post.json")
       .then((res) => res.json())
       .then((data) => setPosts(data.posts));
   }, []);

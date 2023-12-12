@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 import { Alert } from 'react-bootstrap';
 import axios from 'axios';
 import { useSetCurrentUser } from '../contexts/CurrentUserContext';
+// import utils from "../utils/utils";
 
 
 function Login() {
@@ -23,20 +24,13 @@ function Login() {
 
     let navigate = useNavigate();
 
-    const handleChange = (event) => {
-        // handleChange for all fields
-        setLoginData({
-            ...loginData,
-            [event.target.name]: event.target.value,
-        });
-    };
-
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
             const { data } = await axios.post('/dj-rest-auth/login/', loginData);
             setCurrentUser(data.user);
+            // utils.setTokenTimestamp(data);
             navigate('/');
         } catch (error) {
             // The question mark will check if there is a response object in the error object
@@ -45,6 +39,14 @@ function Login() {
             console.log('error.response?.data', error.response?.data, error)
             setErrors(error.response?.data);
         }
+    };
+
+    const handleChange = (event) => {
+        // handleChange for all fields
+        setLoginData({
+            ...loginData,
+            [event.target.name]: event.target.value,
+        });
     };
 
     return (

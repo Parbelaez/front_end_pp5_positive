@@ -230,12 +230,10 @@ function CreatePlace() {
                         </div>
                     )} */}
                 </div>
-                // !Change to the form for uploading images!!!!!!!!!!!!!!
-                // !Change to bootstrap!!!!!!!!!!!!!!
                 <div className="form-group">
                     <label htmlFor="image">Image</label>
                     <input
-                        type="text"
+                        type="file"
                         className="form-control"
                         id="image"
                         name="image"

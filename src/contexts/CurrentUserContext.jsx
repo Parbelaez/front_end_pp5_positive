@@ -57,14 +57,14 @@ export const CurrentUserProvider = ({ children }) => {
                     } catch (error) {
                         setCurrentUser(prevCurrentUser => {
                             if (prevCurrentUser) {
-                                navigate('/login');
+                                navigate('/login')
                             }
-                            return null;
-                        });
+                            return null
+                        })
                     }
-                    return axiosRes(error.config);
+                    return axiosRes(error.config)
                 }
-                return Promise.reject(error);
+                return Promise.reject(error)
             });
     }, [navigate])
 

@@ -1,7 +1,7 @@
 import React  from 'react'
 import { Button, Container, Form, Nav, Navbar, NavDropdown }  from 'react-bootstrap';
 import logo_color_trimmed from '../assets/logo_color_trimmed.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import styles from '../styles/NavBar.module.css';
 import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext';
 import Avatar from './Avatar';
@@ -36,19 +36,27 @@ const NavBar = () => {
     const loggedInIcons = (
         <>
             <NavDropdown title="Places" id="basic-nav-dropdown">
-                <NavDropdown.Item to="/places">
-                    All Places
+                <NavDropdown.Item>
+                    <Link to="/places">
+                        All Places
+                    </Link>
                 </NavDropdown.Item>
-                <NavDropdown.Item to="/new_place">
-                    Create New Place
+                <NavDropdown.Item>
+                    <Link to="/new_place">
+                        Create New Place
+                    </Link>
                 </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Posts" id="basic-nav-dropdown">
-                <NavDropdown.Item to="posts">
-                    All Posts
+                <NavDropdown.Item>
+                    <Link to="/posts">
+                        All Posts
+                    </Link>
                 </NavDropdown.Item>
-                <NavDropdown.Item to="/new_post">
-                    Create New Post
+                <NavDropdown.Item>
+                    <Link to="/new_post">
+                        Create New Post
+                    </Link>
                 </NavDropdown.Item>
             </NavDropdown>
             <NavLink
@@ -67,7 +75,13 @@ const NavBar = () => {
         <Navbar expanded={expanded} expand="md" fixed="top" className="bg-body-tertiary">
             <Container>
                 <Navbar.Brand>
-                    <img src={logo_color_trimmed} alt="logo" height="45"></img>
+                    <Link to="/">
+                        <img
+                            src={logo_color_trimmed}
+                            alt="logo"
+                            height="45">
+                        </img>
+                    </Link>
                 </Navbar.Brand>
                 <Navbar.Toggle
                     ref={ref}

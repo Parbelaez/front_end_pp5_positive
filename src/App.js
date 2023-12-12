@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import CreatePlace from './pages/CreatePlace';
+import CreatePost from './pages/CreatePost';
 
 
 function App() {
@@ -19,8 +20,10 @@ function App() {
               <Route exact path="/" element={<Home />} />
               <Route exact path="/signup" element={<Signup />} />
               <Route exact path="/login" element={<Login />} />
-              <Route exact path="/places" element={<CreatePlace />} />
+              <Route exact path="/places" element={<Places />} />
+              <Route exact path="/new_place" element={<CreatePlace />} />
               <Route exact path="/posts" element={<Posts />} />
+              <Route exact path="/new_post" element={<CreatePost />} />
               <Route exact path="/profile" element={<Profile />} />
               <Route exact path="/logout" element={<Logout />} />
               <Route exact path="/about" element={<About />} />

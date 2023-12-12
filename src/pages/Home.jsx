@@ -10,7 +10,7 @@ function Home() {
   }, []);
   return (
     <div>
-      <h1>Home Page</h1>
+      <h1>Positive Posts</h1>
       <div className="row">
         {posts.map((post) => (
           <div className="col-md-4">

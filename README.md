@@ -31,7 +31,7 @@ Also, when one writes a negative review, it is very easy to get carried away and
 
 ## Starting the React App
 
-To start the React app, you need first to create the repository using the CIs template form ____!!!!!
+To start the React app, you need first to create the repository using the CIs template form \_\_\_\_!!!!!
 Then, run the following commands in the terminal:
 
 1. `npm install`
@@ -115,7 +115,7 @@ And then, we need to wrap our app with the `Router` component. You can do that b
 <Router>
 ```
 
-***SUPER IMPORTANT:*** The React Router version in the tutorial is not the same as the one we are using. So, you need to change the code a little bit. For example: Switch has been deprecated and replaced with Routes. You can read more about the changes here: https://reactrouter.com/docs/en/v6/upgrading/v5
+**_SUPER IMPORTANT:_** The React Router version in the tutorial is not the same as the one we are using. So, you need to change the code a little bit. For example: Switch has been deprecated and replaced with Routes. You can read more about the changes here: https://reactrouter.com/docs/en/v6/upgrading/v5
 
 Feel free to check the code in the App.js file to see how it should look like.
 
@@ -245,13 +245,13 @@ And we are retrieving the user data and storing it in the following code:
 
 ```js
 const handleMount = async () => {
-        try {
-            const { data } = await axios.get('dj-rest-auth/user/');
-            setCurrentUser(data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
+  try {
+    const { data } = await axios.get("dj-rest-auth/user/");
+    setCurrentUser(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
 ```
 
 **NOTE: ** as you now from the API project, we are using the dj-rest-auth package to handle the authentication.
@@ -262,9 +262,15 @@ As we are using JWT (JSON Web Tokens), we need to check if they have expired or 
 
 You can read more about it here: https://www.npmjs.com/package/axios#interceptors
 
+The logic is the following:
+
+![axios_interceptors](./README_Images/axios_interceptors.png)
+
+*Image taken from the CI tutorial*
+
+The code can be found in the axiosDefaults.js file, and the CurrentUserContext.jsx file.
 
 
 ## Creating the About component
 
 To create the About component, you can follow the same steps as for the Home component.
-

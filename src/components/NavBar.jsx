@@ -7,6 +7,7 @@ import { useCurrentUser } from '../contexts/CurrentUserContext';
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
+    console.log('currentUser', currentUser);
 
     const loggedInIcons = <>{currentUser?.username}</>;
     const loggedOutIcons = <></>;

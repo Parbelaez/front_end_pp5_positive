@@ -1,8 +1,6 @@
 # THE POSITIVE SOCIAL NETWORK
 
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-Welcome,
+![The Positive Social Network](./README_Images/cover_med.jpg)
 
 ## Table of Contents
 
@@ -23,13 +21,15 @@ Welcome,
 
 ## Introduction
 
+Welcome,
+
 This project is a React App for the Positive Social Network Front-End, a social network for people to share only positive reviews of restaurants, bars, hotels, etc. Why only positive reviews? Because we want to create a positive environment for people to share their experiences and recommendations. We believe that there are already too many negative reviews on the internet, and we want to change that.
 
 In my experience as a movie and music reviewer, people feel also attracted to check the negatively scored movies. We humans are curious by nature, and we want to know why a movie is so bad, or why a restaurant is so bad. We even want to contradict others opinions, so we also want to prove people wrong. This is why I believe that a social network with only positive reviews will be a success. Not only because really good places will have more notoriety, but also because people won't have information about bad places, so these places will need to strive harder to at least, have presence in the Internet.
 
 Also, when one writes a negative review, it is very easy to get carried away and write a very long one, losing even scope. But, when one writes a positive review, needs to really focus on explaining why the place is so good, and this is a good exercise for the brain and also, to hihglight why the place is worth visiting.
 
-## StaRting the React App
+## Starting the React App
 
 To start the React app, you need first to create the repository using the CIs template form ____!!!!!
 Then, run the following commands in the terminal:
@@ -72,6 +72,8 @@ Then, you can use the component in the `App.js` file by adding the following cod
 To create the Footer component, you can follow the same steps as for the NavBar component.
 
 ## Creating the Home component
+
+![Home component](./README_Images/dashboard_wireframe.png)
 
 Before creating the rest of the components, we need to create the routes.
 
@@ -181,6 +183,8 @@ This way, we will have a better overview of which components we are using in whi
 
 ## Creating the Login component
 
+![login_wireframe](./README_Images/login_wireframe.png)
+
 To create the Login.jsx component, we have used a Bootstrap form. You can read more about it here: https://react-bootstrap.github.io/components/forms/
 
 There is something imprtant compared with the tutorial, and it is the 'useNavigate' hook. You can read more about it here: https://reactrouter.com/docs/en/v6/api#usenavigate . Basically, it is used to navigate to a different page, but, in the tutorial, they are using the 'useHistory' hook. You can read more about it here: https://reactrouter.com/docs/en/v6/api#usehistory . The difference is that the 'useNavigate' hook is used in React Router v6, and the 'useHistory' hook is used in React Router v5.
@@ -215,9 +219,13 @@ navigate("/");
 
 ## Creating the SignUp component
 
+![signup_wireframe](./README_Images/signup_wireframe.png)
+
 To create the SignUp component, you can follow the same steps as for the Login component.
 
 ## Creating the Dashboard (Home) component
+
+![dashboard_wireframe](./README_Images/dashboard_wireframe.png)
 
 The idea of the webpage, is that the non-registered user will only see a splash screen in which it is invited to make part of the community. The registered user is invited to log in. And the logged in user will see the dashboard (Home) component.
 

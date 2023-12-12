@@ -36,7 +36,7 @@ function Signup() {
         try {
             console.log('try submit signUpData');
             await axios.post('/dj-rest-auth/registration/', signUpData);
-            navigate('/signin');
+            navigate('/login');
             console.log('finished submit signUpData');
         } catch (error) {
             // The question mark will check if there is a response object in the error object

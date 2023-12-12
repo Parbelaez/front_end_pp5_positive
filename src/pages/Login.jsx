@@ -33,8 +33,9 @@ function Login() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
         try {
-            await axios.post('/dj-rest-auth/login/', loginData);
+            const { data } = await axios.post('/dj-rest-auth/login/', loginData);
             setCurrentUser(data.user);
             navigate('/');
         } catch (error) {

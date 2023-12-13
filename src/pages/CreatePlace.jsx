@@ -1,39 +1,42 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { axiosReq } from "../api/axiosDefaults";
 import { useNavigate } from "react-router-dom";
+import Alert from "react-bootstrap/Alert";
 
+// For this form, we used a different approach to the one taught in the course.
+// There is no destructuring of the postData object, and the handleChange function
+// is used for all fields.
+// Even though, the approach is not as efficient and it is more repetitive, it
+// is easier to understand and to debug. And it serves as a good example of how
+// the many ways to do things in React and coding overall (logic practice).
 
 function CreatePlace() {
-    // const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({});
     const [countries, setCountry] = useState([]);
     const [cities, setCity] = useState([]);
     var cityCountries = {};
     const [countryAndCity, setCountryAndCity] = useState({});
-    let history = useNavigate();
+    const imageInput = useRef(null);
+    let navigate = useNavigate();
 
-    // Fetches all countries and their cities fro the API
+    // Fetches all countries and their cities from a third party API
+    // More on this in the README.md file
     useEffect(() => {
         fetch("https://countriesnow.space/api/v0.1/countries")
             .then((res) => res.json())
             .then((data) => {
                 setCountry(data.data);
                 data.data.forEach((country) => {
-                    // !Change to the one in the API!!!!!!!!!!!!!!
                     cityCountries[country.country] = country.cities;
                 });
-                // data.data.forEach((country) => {
-                //     setCountryAndCity({...countryAndCity, [country.country]: country.cities})
-                //         });
             })
             // Used to avoid the error of the city field being empty when the country is selected
             .then(() => {
                 setCountryAndCity(cityCountries);
             })
-            },
-        [[],[]]);
-    
-
-    
+    },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    []);
 
     const handleChange = (event) => {
         // handleChange for all fields
@@ -43,12 +46,17 @@ function CreatePlace() {
         });
         // handleChange for country field... city field is updated based on country
         if (event.target.name === "country") {
-            console.log('campo event.target.value');
-            console.log(event.target.value);
-            console.log('campo cityCountries');
-            console.log(countryAndCity);
-
             setCity(countryAndCity[event.target.value]);
+        }
+    };
+
+    const handleChangeImage = (event) => {
+        // handleChange for image field
+        if (event.target.files.length) {
+            setPostData({
+                ...postData,
+                image: URL.createObjectURL(event.target.files[0]),
+            });
         }
     };
 
@@ -66,26 +74,26 @@ function CreatePlace() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const signUp = new signUp();
+        const formData = new FormData();
 
-        signUp.append("place_name", postData.place_name);
-        signUp.append("place_type", postData.place_type);
-        signUp.append("address", postData.address);
-        signUp.append("country", postData.country);
-        signUp.append("city", postData.city);
-        signUp.append("website", postData.website);
-        signUp.append("phone_number", postData.phone_number);
-        signUp.append("description", postData.description);
-        signUp.append("image", postData.imageInput.current.files[0]);
+        formData.append("place_name", postData.place_name);
+        formData.append("place_type", postData.place_type);
+        formData.append("address", postData.address);
+        formData.append("country", postData.country);
+        formData.append("city", postData.city);
+        formData.append("website", postData.website);
+        formData.append("phone_number", postData.phone_number);
+        formData.append("description", postData.description);
+        formData.append("image", postData.imageInput.current.files[0]);
 
         try {
-            const { data } = await axiosReq.post("/posts/", signUp);
-            history.push(`/posts/${data.id}`);
+            const { data } = await axiosReq.post("/posts/", formData);
+            navigate(`/posts/${data.id}`);
         } catch (err) {
             console.log(err);
-        //     if (err.response?.status !== 401) {
-        //     setErrors(err.response?.data);
-        //     }
+            if (err.response?.status !== 401) {
+            setErrors(err.response?.data);
+            }
         }
     };
 
@@ -103,28 +111,32 @@ function CreatePlace() {
                         value={postData.place_name}
                         onChange={handleChange}
                     />
-                    {/* {errors.place_name && (
-                        <div className="alert alert-danger">
-                            {errors.place_name}
-                        </div>
-                    )} */}
                 </div>
+                {errors?.title?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                    {message}
+                    </Alert>
+                ))}
                 <div className="form-group">
                     <label htmlFor="place_type">Place Type</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="place_type"
+                    <select
                         name="place_type"
-                        value={postData.place_type}
-                        onChange={handleChange}
-                    />
-                    {/* {errors.place_type && (
-                        <div className="alert alert-danger">
-                            {errors.place_type}
-                        </div>
-                    )} */}
+                        className="form-control"
+                        id="place_type">
+                        <option value="restaurant">Restaurant</option>
+                        <option value="bar">Bar</option>
+                        <option value="hotel">Hotel</option>
+                        <option value="museum">Museum</option>
+                        <option value="park">Park</option>
+                        <option value="beach">Beach</option>
+                        <option value="other">Other</option>
+                    </select>
                 </div>
+                {errors?.title?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                    {message}
+                    </Alert>
+                ))}
                 <div className="form-group">
                     <label htmlFor="address">Address</label>
                     <input
@@ -135,12 +147,12 @@ function CreatePlace() {
                         value={postData.address}
                         onChange={handleChange}
                     />
-                    {/* {errors.address && (
-                        <div className="alert alert-danger">
-                            {errors.address}
-                        </div>
-                    )} */}
                 </div>
+                {errors?.title?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                    {message}
+                    </Alert>
+                ))}
                 <div className="form-group">
                     <label htmlFor="country">Country</label>
                     <select
@@ -157,12 +169,12 @@ function CreatePlace() {
                             </option>
                         ))}
                     </select>
-                    {/* {errors.country && (
-                        <div className="alert alert-danger">
-                            {errors.country}
-                        </div>
-                    )} */}
                 </div>
+                {errors?.title?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                    {message}
+                    </Alert>
+                ))}
                 <div className="form-group">
                     <label htmlFor="city">City</label>
                     <select
@@ -177,12 +189,12 @@ function CreatePlace() {
                             <option value={city}>{city}</option>
                         ))}
                     </select>
-                    {/* {errors.city && (
-                        <div className="alert alert-danger">
-                            {errors.city}
-                        </div>
-                    )} */}
                 </div>
+                {errors?.title?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                    {message}
+                    </Alert>
+                ))}
                 <div className="form-group">
                     <label htmlFor="website">Website</label>
                     <input
@@ -199,6 +211,11 @@ function CreatePlace() {
                         </div>
                     )} */}
                 </div>
+                {errors?.title?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                    {message}
+                    </Alert>
+                ))}
                 <div className="form-group">
                     <label htmlFor="phone_number">Phone Number</label>
                     <input
@@ -209,12 +226,12 @@ function CreatePlace() {
                         value={postData.phone_number}
                         onChange={handleChange}
                     />
-                    {/* {errors.phone_number && (
-                        <div className="alert alert-danger">
-                            {errors.phone_number}
-                        </div>
-                    )} */}
                 </div>
+                {errors?.title?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                    {message}
+                    </Alert>
+                ))}
                 <div className="form-group">
                     <label htmlFor="description">Description</label>
                     <textarea
@@ -224,12 +241,12 @@ function CreatePlace() {
                         value={postData.description}
                         onChange={handleChange}
                     />
-                    {/* {errors.description && (
-                        <div className="alert alert-danger">
-                            {errors.description}
-                        </div>
-                    )} */}
                 </div>
+                {errors?.title?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                    {message}
+                    </Alert>
+                ))}
                 <div className="form-group">
                     <label htmlFor="image">Image</label>
                     <input
@@ -237,15 +254,17 @@ function CreatePlace() {
                         className="form-control"
                         id="image"
                         name="image"
-                        value={postData.image}
-                        onChange={handleChange}
+                        accept="image/*"
+                        onChange={handleChangeImage}
+                        ref={imageInput}
                     />
-                    {/* {errors.image && (
-                        <div className="alert alert-danger">
-                            {errors.image}
-                        </div>
-                    )} */}
                 </div>
+                {errors?.title?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                    {message}
+                    </Alert>
+                ))}
+                <br />
                 <button type="submit" className="btn btn-primary">
                     Submit
                 </button>

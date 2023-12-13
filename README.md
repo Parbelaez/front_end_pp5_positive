@@ -274,3 +274,29 @@ The code can be found in the axiosDefaults.js file, and the CurrentUserContext.j
 ## Creating the About component
 
 To create the About component, you can follow the same steps as for the Home component.
+
+## Creating the CreatePlace component
+
+As the porpuse of all projects is to practice, we have decided to use a different approach to create the CreatePlace component. In this case, a not so efficient one, but easier to understand for the students.
+
+**NOTE: ** I would like that my projects could help future students understanding different approaches and the whys.
+
+There is an interesting part of this component, and it is the use of a third party resource:
+
+https://countriesnow.space/api/v0.1/countries
+
+This resource is used to get the list of countries and their cities. We are using it to populate the country and city fields in the form.
+
+We have decided to part ways (momentarily) with our cities-light library, because:
+
+1. The DB is filled with 44MB of data, and the free tier of turtleDB only allows 20MB.
+2. The DB proved to have some format issues, which interfere with different languages setups, and we don't want to have this kind of issues in a project meant to be used worldwide.
+3. The fixing of all these issues would take a lot of time, and we want to focus on the React part of the project.
+4. As this solution is derived from a lookup table, unless it is updated, there will be no chance of corruption in ours. But, it is recommended to check from time to time the consistency of the data.
+*RECOMMENDATION:* make a select distinct country from places_table and check the number of countries, and compare with the previous dump.
+
+## Creating the PlaceDetail component
+
+## Creating the CreatePost component
+
+For this one, we have used the approach used in the Moments tutorial.

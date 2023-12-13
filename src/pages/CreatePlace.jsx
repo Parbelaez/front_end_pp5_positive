@@ -84,7 +84,7 @@ function CreatePlace() {
         formData.append("website", postData.website);
         formData.append("phone_number", postData.phone_number);
         formData.append("description", postData.description);
-        formData.append("image", postData.imageInput.current.files[0]);
+        formData.append("image", imageInput.current.files[0]);
 
         try {
             const { data } = await axiosReq.post("/posts/", formData);

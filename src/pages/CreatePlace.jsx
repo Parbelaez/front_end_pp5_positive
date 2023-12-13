@@ -19,6 +19,18 @@ function CreatePlace() {
     const imageInput = useRef(null);
     let navigate = useNavigate();
 
+    const [postData, setPostData] = useState({
+        place_name: "",
+        place_type: "",
+        address: "",
+        country: "",
+        city: "",
+        website: "",
+        phone_number: "",
+        description: "",
+        image: "",
+    });
+
     // Fetches all countries and their cities from a third party API
     // More on this in the README.md file
     useEffect(() => {
@@ -60,18 +72,6 @@ function CreatePlace() {
         }
     };
 
-    const [postData, setPostData] = useState({
-        place_name: "",
-        place_type: "",
-        address: "",
-        country: "",
-        city: "",
-        website: "",
-        phone_number: "",
-        description: "",
-        image: "",
-    });
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
@@ -87,8 +87,8 @@ function CreatePlace() {
         formData.append("image", imageInput.current.files[0]);
 
         try {
-            const { data } = await axiosReq.post("/posts/", formData);
-            navigate(`/posts/${data.id}`);
+            const { data } = await axiosReq.post("/places/", formData);
+            navigate(`/places/${data.id}`);
         } catch (err) {
             console.log(err);
             if (err.response?.status !== 401) {

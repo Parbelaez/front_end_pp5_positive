@@ -27,7 +27,8 @@ const NavBar = () => {
         <>
             <NavLink
                 className={styles.NavLink}
-                to={"/profiles/${currentUser?profile_id}"}>
+                // Back ticks are used to interpolate the profile id
+                to={`/profiles/${currentUser?.profile_id}`}>
                 <Avatar src={currentUser?.profile_image} height={40} />
             </NavLink>
         </>

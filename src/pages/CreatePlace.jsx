@@ -72,6 +72,13 @@ function CreatePlace() {
         }
     };
 
+    const handleSelect = (event) => {
+        setPostData({
+            ...postData,
+            [event.target.name]: event.target.value,
+        });
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
@@ -122,7 +129,9 @@ function CreatePlace() {
                     <select
                         name="place_type"
                         className="form-control"
-                        id="place_type">
+                        id="place_type"
+                        onChange={handleSelect}>
+                        <option value="" selected disable hidden>Choose the type of place</option>
                         <option value="restaurant">Restaurant</option>
                         <option value="bar">Bar</option>
                         <option value="hotel">Hotel</option>

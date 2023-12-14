@@ -52,6 +52,11 @@ return profile.id === clickedProfile.id
     profile;
 };
 
+export const setAccessToken = (data) => {
+const accessToken = jwtDecode(data?.access_token).exp;
+localStorage.setItem("accessToken", accessToken);
+};
+
 export const setTokenTimestamp = (data) => {
 const refreshTokenTimestamp = jwtDecode(data?.refresh_token).exp;
 localStorage.setItem("refreshTokenTimestamp", refreshTokenTimestamp);

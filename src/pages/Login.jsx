@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import { Alert } from 'react-bootstrap';
 import axios from 'axios';
 import { useSetCurrentUser } from '../contexts/CurrentUserContext';
-// import utils from "../utils/utils";
+import { setTokenTimestamp, setAccessToken } from "../utils/utils";
 
 
 function Login() {
@@ -29,8 +29,11 @@ function Login() {
 
         try {
             const { data } = await axios.post('/dj-rest-auth/login/', loginData);
+            // ! log data back from dj-rest-auth
+            console.log('recieved data: ', data)
             setCurrentUser(data.user);
-            // utils.setTokenTimestamp(data);
+            // setAccessToken(data);
+            setTokenTimestamp(data);
             navigate('/');
         } catch (error) {
             // The question mark will check if there is a response object in the error object
